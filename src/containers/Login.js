@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -8,16 +8,28 @@ import Grid from '@mui/material/Grid';
 import image from '../assets/ProfilePicture.png'
 import { ThemeProvider } from '@mui/material/styles';
 import Theme from '../components/Theme'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../configs/firebase';
 
 const Login = () => {
-    const handleSubmit = (event) => {
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        const email = data.get('email')
+        const password = data.get('password')
+
+
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/")
+        } catch (error) {
+            setErrorMessage(error.message)
+        }
     };
 
     return (

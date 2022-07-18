@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -8,16 +8,27 @@ import Grid from '@mui/material/Grid';
 import image from '../assets/ProfilePicture.png'
 import { ThemeProvider } from '@mui/material/styles';
 import Theme from '../components/Theme'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../configs/firebase'
+import { Typography } from '@mui/material';
 
 const Register = () => {
-    const handleSubmit = (event) => {
+    const navigate = useNavigate()
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        const email = data.get('email')
+        const password = data.get('password')
+        try {
+            const { user } = await createUserWithEmailAndPassword(auth, email, password)
+            console.log(user)
+            navigate("/")
+        } catch (error) {
+            setErrorMessage(error.message);
+        }
     };
 
     return (
@@ -72,6 +83,7 @@ const Register = () => {
                                 color="secondary"
                                 autoComplete="current-password"
                             />
+                            <Typography color='red'>{errorMessage}</Typography>
                             <Button
                                 type="submit"
                                 color="secondary"
@@ -79,7 +91,7 @@ const Register = () => {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
-                                LOGIN
+                                REGISTER
                             </Button>
                             <Grid container justifyContent="flex-end">
                                 <Grid item>
