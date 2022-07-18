@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import Home from './containers/Home';
+import Home from './containers/home/Home';
 import Footer from './components/footer/Footer';
 import Theme from './components/Theme'
 import { ThemeProvider } from '@mui/material/styles';

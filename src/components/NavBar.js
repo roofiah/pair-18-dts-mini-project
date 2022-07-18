@@ -14,6 +14,7 @@ import Logo from '../assets/logo.png'
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../configs/firebase';
 import { signOut } from "firebase/auth";
+
 const pages = ['Home', 'Series', 'Movies', 'New and Popular', 'My List'];
 // const settings = ['Logout'];
 

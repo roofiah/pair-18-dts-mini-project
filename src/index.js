@@ -27,7 +27,8 @@ root.render(
           <ProtectedRoute loginOnly={false}>
             <Register />
           </ProtectedRoute>
-        }></Route>
+        }>
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
