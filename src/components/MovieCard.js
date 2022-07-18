@@ -1,12 +1,19 @@
 import React from 'react';
 import Card from '@mui/material/Card';
 import { CardMedia } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
 
 const MovieCard = ({ movie }) => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate(`/movie/${movie.id}`)
+    }
     return (
-        <Card sx={{ maxWidth: 200, backgroundColor: 'blue' }}>
+        <Card
+            onClick={handleClick}
+            sx={{ maxWidth: 200, backgroundColor: 'blue' }}>
             <CardMedia
                 component="img"
                 height="300"
