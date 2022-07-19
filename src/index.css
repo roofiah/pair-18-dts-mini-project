@@ -11,3 +11,62 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.content {
+    text-align: center;
+    background-color: #141414;
+    color:white;
+}
+
+
+/* Login */
+.login-image{
+  position: absolute;
+  left: 0px;
+  width: 60%;
+  height: 100%;
+  background: url('../src/assets/ProfilePicture.png')
+}
+
+.login-content{
+  font-family: 'Inter';
+    font-size: 26px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    position: absolute;
+    width: 55%;
+    height: 100%;
+    right: 0px;
+    background: linear-gradient(270deg, #000000 76%, rgba(217, 217, 217, 0) 99%);
+}
+
+.form-login{
+  width: 50%;
+  margin-left: 35%;
+}
+
+/* Footer */
+.container-footer{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.box-text-footer{
+  text-align: left;
+}
+
+.btn-footer{
+  background-color: #141414;
+  border-color: white;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-width: thin;
+  display: flex;
+  margin: 5px 0px 5px 0px;
+}
+
+.copyright{
+  text-align: left;
+}
+

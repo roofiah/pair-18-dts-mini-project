@@ -3,7 +3,6 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 
 const listOne = [
     {
@@ -85,42 +84,34 @@ const copyright = `© ${new Date().getFullYear()} Movies. All Rights Reserved`
 
 const Footer = () => {
     return (
-        <Container maxWidth="lg" color='secondary'>
-            <Grid container spacing={5}>
+        <Container maxWidth="lg" className="container-footer">
+            <Grid container spacing={5} className="box-text-footer" >
                 <Grid item xs={12} sm={6} md={3}>
                     {/* <Box borderBottom={1}>Help</Box> */}
                     {listOne.map(data => (
                         <Box>
-                            <Link href="/" color="inherit">
-                                {data.title}
-                            </Link>
+                            {data.title}
                         </Box>
                     ))}
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
                     {listTwo.map(data => (
                         <Box>
-                            <Link href="/" color="inherit">
-                                {data.title}
-                            </Link>
+                            {data.title}
                         </Box>
                     ))}
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
                     {listThree.map(data => (
                         <Box>
-                            <Link href="/" color="inherit">
-                                {data.title}
-                            </Link>
+                            {data.title}
                         </Box>
                     ))}
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
                     {listFour.map(data => (
                         <Box>
-                            <Link href="/" color="inherit">
-                                {data.title}
-                            </Link>
+                            {data.title}
                         </Box>
                     ))}
                 </Grid>

@@ -19,11 +19,13 @@ import { Badge } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SearchIcon from '@mui/icons-material/Search';
 import Search from './SearchMenu';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = ['Home', 'Series', 'Movies', 'New and Popular', 'My List'];
 // const settings = ['Logout'];
 
 const NavBar = () => {
+    const [userLogin] = useAuthState(auth)
     const navigate = useNavigate()
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
@@ -46,6 +48,10 @@ const NavBar = () => {
         }).catch((error) => {
             console.log(error)
         });
+    }
+
+    const onLogin = () => {
+        navigate("/login")
     }
 
     return (
@@ -72,44 +78,48 @@ const NavBar = () => {
                         ))}
                     </Box>
                     <Box sx={{ flexGrow: 0, display: { md: 'flex' } }}>
-                        {/* <Search /> */}
-                        <IconButton size="large">
-                            <SearchIcon />
-                        </IconButton>
-                        <IconButton size="large" >
-                            <img src={giftIcon}
-                                alt="logo"
-                                className="navbar-icon"
-                            />
-                        </IconButton>
-                        <IconButton size="large" >
-                            <Badge badgeContent={2} color="error">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
-                        <Tooltip>
-                            <IconButton onClick={handleOpenUserMenu}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            <MenuItem onClick={onLogout}>
-                                <Typography textAlign="center">Logout</Typography>
-                            </MenuItem>
-                            {/* {settings.map((data) => (
-                                <MenuItem key={data} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{data}</Typography>
-                                </MenuItem>
-                            ))} */}
-                        </Menu>
+                        {userLogin ?
+                            <Box>
+                                {/* <Search /> */}
+                                <IconButton size="large">
+                                    <SearchIcon />
+                                </IconButton>
+                                <IconButton size="large" >
+                                    <img src={giftIcon}
+                                        alt="logo"
+                                        className="navbar-icon"
+                                    />
+                                </IconButton>
+                                <IconButton size="large" >
+                                    <Badge badgeContent={2} color="error">
+                                        <NotificationsIcon />
+                                    </Badge>
+                                </IconButton>
+                                <Tooltip>
+                                    <IconButton onClick={handleOpenUserMenu}>
+                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    <MenuItem onClick={onLogout}>
+                                        <Typography textAlign="center">Logout</Typography>
+                                    </MenuItem>
+                                </Menu>
+                            </Box>
+                            :
+                            <Box onClick={onLogin}>
+                                <Typography textAlign="center">Login</Typography>
+                            </Box>
+                        }
+
                     </Box>
                 </Toolbar>
             </Container>
