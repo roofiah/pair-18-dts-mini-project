@@ -28,12 +28,16 @@ function RouteApp() {
           <Route path='/' element={
             <Home />
           }></Route>
-          <Route path="/movie/:movieId" element={
+          <Route path="/movie/:idMovie" element={
             <ProtectedRoute>
               <DetailMovie />
             </ProtectedRoute>
           }>
           </Route>
+          <Route path="/series" element={<Home data='series' />} />
+          <Route path="/movies" element={<Home data='movies' />} />
+          <Route path="/new-popular" element={<Home data='new-popular' />} />
+          <Route path="/my-list" element={<Home data='my-list' />} />
         </Route>
       </Routes>
     </BrowserRouter>

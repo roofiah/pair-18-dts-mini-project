@@ -1,8 +1,30 @@
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-Regular"),
+  url("./assets/fonts/Inter-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inter Light";
+  src: local("Inter-Light"),
+  url("./assets/fonts/Inter-Light.ttf");
+}
+
+@font-face {
+  font-family: "Inter Medium";
+  src: local("Inter-Medium"),
+  url("./assets/fonts/Inter-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Inter Bold";
+  src: local("Inter-Bold"),
+  url("./assets/fonts/Inter-Bold.ttf");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', 'Netflix-Sans', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -18,6 +40,34 @@ code {
     color:white;
 }
 
+/* Nav */
+.nav {
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+  border-radius: 4px;
+  padding: 12px 8px;
+  margin-right: 8px;
+  text-decoration: none;
+}
+
+.nav-inactive {
+  color: #c1c1c1;
+}
+
+.nav-active {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.text-user{
+  font-size: 12px !important;
+  color:#c1c1c1 !important;
+}
+
+.box-menu{
+  padding:5px;
+}
 
 /* Login */
 .login-image{
@@ -25,7 +75,8 @@ code {
   left: 0px;
   width: 60%;
   height: 100%;
-  background: url('../src/assets/ProfilePicture.png')
+  background:url('https://placebear.com/1024/1024')
+  /* background: url('../src/assets/images/ProfilePicture.png') */
 }
 
 .login-content{
@@ -46,6 +97,60 @@ code {
   margin-left: 35%;
 }
 
+.login-text{
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 200;
+}
+
+.login-text>a{
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 200;
+}
+
+
+/* Movie */
+.movie-box {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: visible;
+  width: 100%;
+}
+
+.movie-box .movie-content {
+  margin: 18px 5px
+}
+
+.movie-content img {
+  max-height: 200px;
+  border-radius: 5px;
+}
+
+.movie-content img:hover {
+  cursor: pointer;
+}
+
+.video-content{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.box-video{
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  position: relative;
+}
+.box-video iframe {
+  left: 0;
+  top: 0;
+  height: 80%;
+  width: 90%;
+  position: absolute;
+  margin: 0 5%;
+}
+
 /* Footer */
 .container-footer{
   padding-top: 20px;
@@ -53,20 +158,31 @@ code {
 }
 
 .box-text-footer{
+  font-family: "Inter Medium";
   text-align: left;
+  font-size: 12px;
+  color:#808080;
+}
+
+.text-footer{
+  margin-bottom: 5px;
 }
 
 .btn-footer{
-  background-color: #141414;
-  border-color: white;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-width: thin;
   display: flex;
-  margin: 5px 0px 5px 0px;
+  flex-direction: row;
+  background-color: #141414;
+  border: 1px solid #808080;
+  color: #808080;
+  align-items: flex-start;
+  padding: 10px 15px;
+  font-size: 12px;
 }
 
 .copyright{
   text-align: left;
+  font-size: 12px;
+  margin-top: 10px;
+  color: #808080;
 }
 

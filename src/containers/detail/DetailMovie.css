@@ -5,8 +5,9 @@
 }
 
 .image-backdrop img {
-    width: 100%;
-    border-radius: 5px;
+ max-width: 90%;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .box-image {
@@ -16,7 +17,7 @@
 .text-on-image {
     position: absolute;
     bottom: 15%;
-    margin-left: 5%;
+    margin-left: 10%;
     text-align: left;
     width: 40%;
  }

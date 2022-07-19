@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import image from '../assets/ProfilePicture.png'
-import { ThemeProvider } from '@mui/material/styles';
-import Theme from '../components/Theme'
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../configs/firebase';
@@ -69,17 +64,12 @@ const Login = () => {
                     >
                         LOGIN
                     </Button>
-                    <Grid container>
-                        <Grid item>
-                            <Link to="/register" color="secondary">
-                                {"Don't have an account? Register"}
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <div className='login-text'>
+                        Don't have an account? <Link to="/register">Register</Link>
+                    </div>
                 </Box>
             </div>
-        </div>
-
+        </div >
     );
 }
 

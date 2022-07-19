@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import apiUrl from '../../utils/apiUrl';
-import PopularMovie from '../home/listMovies/PopularMovie';
+import SimilarMovies from '../home/listMovies/SimilarMovies';
 import TopMovies from '../home/listMovies/TopMovies';
-
+import VideoMovies from '../home/listMovies/VideoMovies';
 import './DetailMovie.css'
 
-const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/'
+const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/original/'
 
 const DetailMovie = () => {
-    let { movieId } = useParams();
+    let { idMovie } = useParams();
     const [detail, setDetail] = useState({})
+
+    const fetchImages = async () => {
+        try {
+            const fetchData = await apiUrl.get(`movie/${idMovie}/images`)
+            console.log(fetchData.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const fetchDetail = async () => {
         try {
-            const fetchData = await apiUrl.get(`movie/${movieId}`);
+            const fetchData = await apiUrl.get(`movie/${idMovie}`);
             setDetail(fetchData.data);
             console.log(fetchData.data)
         } catch (error) {
@@ -22,26 +31,17 @@ const DetailMovie = () => {
         }
     }
 
-    const fetchImages = async () => {
-        try {
-            const fetchData = await apiUrl.get(`movie/${movieId}/images`)
-            console.log(fetchData.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     useEffect(() => {
-        fetchDetail()
         fetchImages()
-    }, []);
+        fetchDetail()
+    }, [idMovie]);
 
     return (
         <div className="container-detail">
             <div className='box-image'>
                 <div className='image-backdrop'>
                     <img
-                        src={`${BASE_IMG_URL}${detail.backdrop_path}`}
+                        src={`${BASE_IMAGE_URL}${detail.backdrop_path}`}
                         alt={detail.title} />
                 </div>
                 <div className='text-on-image'>
@@ -55,10 +55,9 @@ const DetailMovie = () => {
                     {detail.overview}
                 </span>
             </div>
-
-            {/* <a href="/">Back</a> */}
-            <PopularMovie />
+            <SimilarMovies idMovie={idMovie} />
             <TopMovies />
+            <VideoMovies idMovie={idMovie} />
         </div>
     )
 }

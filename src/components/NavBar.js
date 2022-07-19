@@ -10,9 +10,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Logo from '../assets/logo.png';
-import giftIcon from '../assets/gift.png'
-import { useNavigate } from 'react-router-dom';
+import Logo from '../assets/images/logo.png';
+import giftIcon from '../assets/images/gift.png'
+import { useNavigate, NavLink } from 'react-router-dom';
 import { auth } from '../configs/firebase';
 import { signOut } from "firebase/auth";
 import { Badge } from '@mui/material';
@@ -21,8 +21,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import Search from './SearchMenu';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-const pages = ['Home', 'Series', 'Movies', 'New and Popular', 'My List'];
-// const settings = ['Logout'];
+const pages = [
+    { name: 'Home', url: '/' },
+    { name: 'Series', url: '/series' },
+    { name: 'Movies', url: "/movies" },
+    { name: 'New and Popular', url: "/new-popular" },
+    { name: 'My List', url: "/my-list" }
+];
 
 const NavBar = () => {
     const [userLogin] = useAuthState(auth)
@@ -32,10 +37,6 @@ const NavBar = () => {
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
     };
 
     const handleCloseUserMenu = () => {
@@ -66,15 +67,17 @@ const NavBar = () => {
                         // className={classes.logo} 
                         />
                     </div>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 1 }} className="nav">
                         {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            <NavLink
+                                to={page.url}
+                                key={page.name}
+                                className={({ isActive }) => isActive ? 'nav nav-active' : 'nav nav-inactive'}
+                                color="info"
+                                underline="none"
                             >
-                                {page}
-                            </Button>
+                                {page.name}
+                            </NavLink>
                         ))}
                     </Box>
                     <Box sx={{ flexGrow: 0, display: { md: 'flex' } }}>
@@ -97,7 +100,7 @@ const NavBar = () => {
                                 </IconButton>
                                 <Tooltip>
                                     <IconButton onClick={handleOpenUserMenu}>
-                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                        <Avatar sx={{ bgcolor: "red" }} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                     </IconButton>
                                 </Tooltip>
                                 <Menu
@@ -109,17 +112,40 @@ const NavBar = () => {
                                     open={Boolean(anchorElUser)}
                                     onClose={handleCloseUserMenu}
                                 >
+                                    <MenuItem className="text-user">{userLogin.email}</MenuItem>
                                     <MenuItem onClick={onLogout}>
                                         <Typography textAlign="center">Logout</Typography>
                                     </MenuItem>
                                 </Menu>
                             </Box>
                             :
-                            <Box onClick={onLogin}>
-                                <Typography textAlign="center">Login</Typography>
+                            <Box>
+                                <IconButton size="large">
+                                    <SearchIcon />
+                                </IconButton>
+                                <Tooltip>
+                                    <IconButton onClick={handleOpenUserMenu}>
+                                        <Avatar src="/broken-image.jpg" />
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    <MenuItem onClick={onLogin}>
+                                        <Typography textAlign="center">Login</Typography>
+                                    </MenuItem>
+                                </Menu>
+                                {/* <Box onClick={onLogin}>
+                                    <Typography textAlign="center">Login</Typography>
+                                </Box> */}
                             </Box>
                         }
-
                     </Box>
                 </Toolbar>
             </Container>

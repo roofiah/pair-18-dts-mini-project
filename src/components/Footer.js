@@ -89,28 +89,28 @@ const Footer = () => {
                 <Grid item xs={12} sm={6} md={3}>
                     {/* <Box borderBottom={1}>Help</Box> */}
                     {listOne.map(data => (
-                        <Box>
+                        <Box className="text-footer">
                             {data.title}
                         </Box>
                     ))}
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
                     {listTwo.map(data => (
-                        <Box>
+                        <Box className="text-footer">
                             {data.title}
                         </Box>
                     ))}
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
                     {listThree.map(data => (
-                        <Box>
+                        <Box className="text-footer">
                             {data.title}
                         </Box>
                     ))}
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
                     {listFour.map(data => (
-                        <Box>
+                        <Box className="text-footer">
                             {data.title}
                         </Box>
                     ))}

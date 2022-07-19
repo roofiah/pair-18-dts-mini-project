@@ -4,7 +4,7 @@ import MovieCard from '../../../components/MovieCard';
 import apiUrl from '../../../utils/apiUrl';
 import './ListMovies.css';
 
-const PopularMovie = () => {
+const PopularMovies = () => {
     const [movies, setMovies] = useState([]);
 
     const fetchPopular = async () => {
@@ -22,23 +22,23 @@ const PopularMovie = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div className='container'>
             <h3 className='title-list'>Popular</h3>
-            <ImageList
-                sx={{
+            {movies ?
+                <ImageList sx={{
                     gridAutoFlow: "column",
                     gridTemplateColumns: "repeat(auto-fill,minmax(160px,1fr)) !important",
                     gridAutoColumns: "minmax(160px, 1fr)"
-                }}
-            >
-                {movies.map((data) => (
-                    <ImageListItem>
-                        <MovieCard key={data.title} movie={data}></MovieCard>
-                        {/* <ImageListItemBar title={image.thumbnail.name} /> */}
-                    </ImageListItem>
-                ))}
-            </ImageList>
+                }}>
+                    {movies.map((data) => (
+                        <ImageListItem>
+                            <MovieCard movie={data}></MovieCard>
+                        </ImageListItem>
+                    ))}
+                </ImageList>
+                :
+                <div>No Movie yet...</div>}
         </div>
     )
 }
-export default PopularMovie
+export default PopularMovies
