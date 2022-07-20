@@ -4,18 +4,17 @@ import apiUrl from "../../../utils/apiUrl";
 const VideoMovies = ({ idMovie }) => {
     const [videos, setVideos] = useState([])
 
-    const fetchVideos = async () => {
-        try {
-            const fetchData = await apiUrl.get(`movie/${idMovie}/videos`);
-            setVideos(fetchData.data.results);
-            console.log(fetchData.data.results)
-        } catch (error) {
-            console.log(error);
-            setVideos([]);
-        }
-    }
-
     useEffect(() => {
+        const fetchVideos = async () => {
+            try {
+                const fetchData = await apiUrl.get(`movie/${idMovie}/videos`);
+                setVideos(fetchData.data.results);
+                console.log(fetchData.data.results)
+            } catch (error) {
+                console.log(error);
+                setVideos([]);
+            }
+        }
         fetchVideos()
     }, [idMovie]);
 
