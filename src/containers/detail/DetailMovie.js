@@ -12,15 +12,6 @@ const DetailMovie = () => {
     let { idMovie } = useParams();
     const [detail, setDetail] = useState({})
 
-    const fetchImages = async () => {
-        try {
-            const fetchData = await apiUrl.get(`movie/${idMovie}/images`)
-            console.log(fetchData.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const fetchDetail = async () => {
         try {
             const fetchData = await apiUrl.get(`movie/${idMovie}`);
@@ -31,9 +22,18 @@ const DetailMovie = () => {
         }
     }
 
+    const fetchImages = async () => {
+        try {
+            const fetchData = await apiUrl.get(`movie/${idMovie}/images`)
+            console.log(fetchData.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
-        fetchImages()
         fetchDetail()
+        fetchImages()
     }, [idMovie]);
 
     return (

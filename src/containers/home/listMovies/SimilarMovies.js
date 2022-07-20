@@ -7,17 +7,16 @@ import './ListMovies.css';
 const SimilarMovies = ({ idMovie }) => {
     const [movies, setMovies] = useState([]);
 
-    const fetchSimilar = async () => {
-        try {
-            const fetchData = await apiUrl.get(`movie/${idMovie}/similar`);
-            setMovies(fetchData.data.results);
-        } catch (error) {
-            console.log(error);
-            setMovies([]);
-        }
-    }
-
     useEffect(() => {
+        const fetchSimilar = async () => {
+            try {
+                const fetchData = await apiUrl.get(`movie/${idMovie}/similar`);
+                setMovies(fetchData.data.results);
+            } catch (error) {
+                console.log(error);
+                setMovies([]);
+            }
+        }
         fetchSimilar()
     }, [idMovie]);
 

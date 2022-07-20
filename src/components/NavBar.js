@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Logo from '../assets/images/logo.png';
@@ -18,7 +17,6 @@ import { signOut } from "firebase/auth";
 import { Badge } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SearchIcon from '@mui/icons-material/Search';
-import Search from './SearchMenu';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const pages = [
@@ -32,7 +30,6 @@ const pages = [
 const NavBar = () => {
     const [userLogin] = useAuthState(auth)
     const navigate = useNavigate()
-    const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
     const handleOpenUserMenu = (event) => {
