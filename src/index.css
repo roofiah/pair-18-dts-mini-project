@@ -75,8 +75,8 @@ code {
   left: 0px;
   width: 60%;
   height: 100%;
-  background:url('https://placebear.com/1024/1024')
-  /* background: url('../src/assets/images/ProfilePicture.png') */
+  /* background:url('https://placebear.com/1024/1024') */
+  background: url('../src/assets/images/ProfilePicture.png')
 }
 
 .login-content{
@@ -184,4 +184,54 @@ code {
   font-size: 12px;
   margin-top: 10px;
   color: #808080;
+}
+
+
+/* Banner */
+.banner {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.banner-img{
+  width: 100%;
+  border-radius: 0px;
+}
+
+.banner-inner{
+  display: flex;
+}
+
+.banner-left{
+  display: flex;
+  padding: 0px 50px 0px 40px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  background: rgb(0, 0, 0);
+  /* background: linear-gradient(270deg, #000000 76%, rgba(217, 217, 217, 0) 99%); */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgb(4, 11, 22) 90%, rgba(0, 0, 0, 1) 100%);
+}
+
+.banner-right {
+  display: flex;
+  align-items: center;
+  max-width: 70%;
+}
+
+.banner-img{
+  width: 700px;
+}
+
+.banner-title,
+.banner-overview{
+  margin-left: 20px;
+  color: white;
+}
+
+.banner-title{
+  font-size: 30px;
+  font-weight: bold;
 }
