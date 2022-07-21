@@ -64,7 +64,7 @@ const Register = () => {
                         REGISTER
                     </Button>
                     <div className='login-text'>
-                        Don't have an account? <Link to="/register">Register</Link>
+                        Don't have an account? <Link to="/register">Login</Link>
                     </div>
                 </Box>
             </div>
