@@ -19,11 +19,13 @@
     bottom: 15%;
     margin-left: 10%;
     text-align: left;
-    width: 40%;
+    background: rgb(0 0 0 / 55%);
+    width: 80%;
+    padding: 10px;
  }
  
  .description{
     text-align: left;
     margin-left: 40px;
-    height: 150px;
+    /* height: 150px; */
  }

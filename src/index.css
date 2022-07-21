@@ -235,3 +235,26 @@ code {
   font-size: 30px;
   font-weight: bold;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .nav{
+    display:none;
+  }
+  .css-r6ewbb-MuiToolbar-root {
+    justify-content: space-between;
+  }
+  .banner-inner {
+    display: block;
+  }
+  .banner-img {
+    width: 100%;
+  }
+  .banner-right{
+    max-width: 100%;
+  }
+  .text-on-image{
+    display:none;
+  }
+  
+}

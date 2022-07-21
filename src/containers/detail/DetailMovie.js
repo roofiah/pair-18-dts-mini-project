@@ -58,7 +58,7 @@ const DetailMovie = () => {
                                     onLoad={handleLoaded} />
                             </div>
                         </div>
-                        <div className='text-on-image'>
+                        <div className='text-on-image bg-black'>
                             <h1>{detail.title}</h1>
                             <span>{detail.overview}</span>
                         </div>
